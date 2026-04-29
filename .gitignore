@@ -1,0 +1,14 @@
+# Hugo build output (Cloudflare Pages 会自己构建)
+public/
+resources/_gen/
+.hugo_build.lock
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
