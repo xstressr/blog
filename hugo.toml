@@ -1,0 +1,91 @@
+baseURL = "https://blog.crazyai.uk/"
+languageCode = "zh-cn"
+defaultContentLanguage = "zh"
+title = "JOJO's Blog"
+theme = "PaperMod"
+paginate = 10
+
+# 启用 Emoji
+enableEmoji = true
+# 启用 robots.txt
+enableRobotsTXT = true
+# 启用 Git 信息
+enableGitInfo = true
+
+[params]
+  env = "production"
+  title = "JOJO's Blog"
+  description = "记录技术、生活与思考"
+  keywords = ["blog", "tech", "AI", "coding"]
+  author = "JOJO"
+  defaultTheme = "auto"        # 自动跟随系统深色模式
+  ShowShareButtons = true
+  ShowReadingTime = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = true
+  ShowRssButtonInSectionTermList = true
+  UseHugoToc = true
+  disableSpecial1stPost = false
+  hidemeta = false
+  hideSummary = false
+  showtoc = true
+  tocopen = true
+
+  [params.homeInfoParams]
+    Title = "👋 Welcome to JOJO's Blog"
+    Content = "记录技术探索、AI 实践与日常思考"
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/xstressr"
+
+  [params.editPost]
+    URL = ""
+    Text = "Edit"
+    appendFilePath = true
+
+  [params.assets]
+    favicon = "/favicon.ico"
+    disableFingerprinting = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNos = false
+    style = "monokai"
+
+[menu]
+  [[menu.main]]
+    identifier = "posts"
+    name = "📝 文章"
+    url = "/posts/"
+    weight = 10
+  [[menu.main]]
+    identifier = "tags"
+    name = "🏷️ 标签"
+    url = "/tags/"
+    weight = 20
+  [[menu.main]]
+    identifier = "archives"
+    name = "📚 归档"
+    url = "/archives/"
+    weight = 30
+  [[menu.main]]
+    identifier = "search"
+    name = "🔍 搜索"
+    url = "/search/"
+    weight = 40
+  [[menu.main]]
+    identifier = "about"
+    name = "👤 关于"
+    url = "/about/"
+    weight = 50

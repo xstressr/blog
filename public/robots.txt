@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://blog.crazyai.uk/sitemap.xml
