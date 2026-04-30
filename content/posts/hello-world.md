@@ -3,56 +3,56 @@ title: "Hello World 🌍"
 date: 2026-04-29T22:00:00+08:00
 draft: false
 tags: ["Hello", "Blog"]
-categories: ["随笔"]
-summary: "博客上线第一篇，记录一下建站过程。"
+categories: ["Misc"]
+summary: "First post — how and why I set up this blog."
 cover:
   image: ""
   alt: ""
   hidden: false
 ---
 
-## 你好，世界！ 🎉
+## Hello, World! 🎉
 
-欢迎来到我的博客！这是用 [Hugo](https://gohugo.io/) + [PaperMod](https://github.com/adityatelange/hugo-PaperMod) 搭建的第一篇博客。
+Welcome to my blog! This is the very first post, built with [Hugo](https://gohugo.io/) + [PaperMod](https://github.com/adityatelange/hugo-PaperMod).
 
-### 为什么选择 Hugo？
+### Why Hugo?
 
-- ⚡ **速度极快** — 编译几百篇文章只需几秒
-- 📝 **Markdown 写作** — 纯文本，版本控制友好
-- 🎨 **主题丰富** — 社区活跃，好看的主题多
-- 🚀 **部署简单** — 静态文件，随便扔哪都行
+- ⚡ **Blazing fast** — compiles hundreds of posts in seconds
+- 📝 **Markdown-first** — plain text, version-control friendly
+- 🎨 **Tons of themes** — active community, great designs
+- 🚀 **Easy to deploy** — static files, throw them anywhere
 
-### 建站过程
+### How I Built It
 
-整个过程其实很简单：
+The whole process was pretty straightforward:
 
 ```bash
-# 1. 安装 Hugo
+# 1. Install Hugo
 brew install hugo  # macOS
-# 或下载 deb/rpm
+# or grab the deb/rpm
 
-# 2. 创建站点
+# 2. Create a site
 hugo new site my-blog
 cd my-blog
 
-# 3. 安装主题
+# 3. Add a theme
 git submodule add https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
 
-# 4. 写文章
+# 4. Write a post
 hugo new posts/hello-world.md
 
-# 5. 本地预览
+# 5. Preview locally
 hugo server -D
 
-# 6. 构建部署
+# 6. Build & deploy
 hugo --minify
 ```
 
-### 接下来的计划
+### What's Next
 
-- [ ] 多写几篇技术文章
-- [ ] 配置评论系统
-- [ ] 添加 RSS 订阅
-- [ ] 优化 SEO
+- [ ] Write more tech articles
+- [ ] Set up comments
+- [ ] Add RSS feed
+- [ ] Optimize SEO
 
 Stay tuned! 📡
