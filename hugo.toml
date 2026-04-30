@@ -1,6 +1,6 @@
 baseURL = "https://blog.crazyai.uk/"
-languageCode = "zh-cn"
-defaultContentLanguage = "zh"
+languageCode = "en"
+defaultContentLanguage = "en"
 title = "JOJO's Blog"
 theme = "PaperMod"
 [pagination]
@@ -16,7 +16,7 @@ enableGitInfo = true
 [params]
   env = "production"
   title = "JOJO's Blog"
-  description = "记录技术、生活与思考"
+  description = "Tech, AI, and random thoughts"
   keywords = ["blog", "tech", "AI", "coding"]
   author = "JOJO"
   defaultTheme = "auto"        # 自动跟随系统深色模式
@@ -36,7 +36,7 @@ enableGitInfo = true
 
   [params.homeInfoParams]
     Title = "👋 Welcome to JOJO's Blog"
-    Content = "记录技术探索、AI 实践与日常思考"
+    Content = "Exploring tech, AI experiments, and random thoughts"
 
   [[params.socialIcons]]
     name = "github"
@@ -67,26 +67,26 @@ enableGitInfo = true
 [menu]
   [[menu.main]]
     identifier = "posts"
-    name = "📝 文章"
+    name = "📝 Posts"
     url = "/posts/"
     weight = 10
   [[menu.main]]
     identifier = "tags"
-    name = "🏷️ 标签"
+    name = "🏷️ Tags"
     url = "/tags/"
     weight = 20
   [[menu.main]]
     identifier = "archives"
-    name = "📚 归档"
+    name = "📚 Archives"
     url = "/archives/"
     weight = 30
   [[menu.main]]
     identifier = "search"
-    name = "🔍 搜索"
+    name = "🔍 Search"
     url = "/search/"
     weight = 40
   [[menu.main]]
     identifier = "about"
-    name = "👤 关于"
+    name = "👤 About"
     url = "/about/"
     weight = 50
