@@ -1,6 +1,6 @@
 ---
 title: "Building a Chat-Style Image Creation Studio — From Form-Based Generation to Conversational AI Art"
-date: 2026-05-03T11:00:00+08:00
+date: 2026-05-02T23:00:00+08:00
 draft: false
 tags: ["picgen", "ai", "product-design", "nextjs", "fastapi"]
 categories: ["tech"]
