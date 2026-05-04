@@ -12,16 +12,7 @@ Hugo blog using PaperMod theme, deployed to Cloudflare Pages.
 
 ## Build & Dev
 
-```bash
-# Init submodules (required for fresh clone or CI)
-git submodule update --init --recursive
-
-# Local dev server
-hugo server -D          # http://localhost:1313, includes drafts
-
-# Production build
-hugo --minify           # output → public/
-```
+Hugo is NOT installed locally — do not attempt `hugo server` or `hugo --minify`. Cloudflare Pages handles all builds. Just write content and push.
 
 ## Writing Posts
 
