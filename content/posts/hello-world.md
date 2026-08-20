@@ -2,6 +2,7 @@
 title: "Hello World 🌍"
 date: 2026-04-29T22:00:00+08:00
 draft: false
+note: "01"
 tags: ["Hello", "Blog"]
 categories: ["Misc"]
 summary: "First post — how and why I set up this blog."

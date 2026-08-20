@@ -1,0 +1,4 @@
+<aside class="folio-card">
+  <p class="folio-card-label">{{ .Get "label" | default "Field evidence" }}</p>
+  <div class="folio-card-body">{{ .Inner | markdownify }}</div>
+</aside>

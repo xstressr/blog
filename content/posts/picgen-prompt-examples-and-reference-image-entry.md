@@ -2,6 +2,7 @@
 title: "From Blank Canvas to Guided Creation — Prompt Examples and Reference Image Entry in PicGen Studio"
 date: 2026-05-04T22:00:00+08:00
 draft: false
+note: "04"
 tags: ["picgen", "ai", "product-design", "nextjs", "fastapi", "ux"]
 categories: ["tech"]
 summary: "PicGen Studio now has Prompt Examples that fill prompts with one click, and a proper 'Add Reference' button that lets you upload local images or pick from history. No more staring at a blank input box."

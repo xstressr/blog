@@ -1,7 +1,7 @@
 baseURL = "https://blog.crazyai.uk/"
 languageCode = "en"
 defaultContentLanguage = "en"
-title = "JOJO's Blog"
+title = "Zero to One AI"
 theme = "PaperMod"
 [pagination]
   pagerSize = 10
@@ -15,12 +15,12 @@ enableGitInfo = true
 
 [params]
   env = "production"
-  title = "JOJO's Blog"
-  description = "Tech, AI, and random thoughts"
-  keywords = ["blog", "tech", "AI", "coding"]
+  title = "Zero to One AI"
+  description = "An honest public learning log about understanding and building AI from first principles."
+  keywords = ["AI learning", "machine learning", "deep learning", "transformers", "LLM", "experiments"]
   author = "JOJO"
-  defaultTheme = "auto"        # 自动跟随系统深色模式
-  ShowShareButtons = true
+  defaultTheme = "light"
+  ShowShareButtons = false
   ShowReadingTime = true
   ShowPostNavLinks = true
   ShowBreadCrumbs = true
@@ -32,11 +32,14 @@ enableGitInfo = true
   hidemeta = false
   hideSummary = false
   showtoc = true
-  tocopen = true
+  tocopen = false
 
   [params.homeInfoParams]
-    Title = "👋 Welcome to JOJO's Blog"
-    Content = "Exploring tech, AI experiments, and random thoughts"
+    Title = "Zero to One AI"
+    Content = "Learning AI from first principles, one honest experiment at a time."
+
+  [params.label]
+    text = "zero → one"
 
   [[params.socialIcons]]
     name = "github"
@@ -62,31 +65,26 @@ enableGitInfo = true
     codeFences = true
     guessSyntax = true
     lineNos = false
-    style = "monokai"
+    style = "tango"
 
 [menu]
   [[menu.main]]
     identifier = "posts"
-    name = "📝 Posts"
+    name = "Notes"
     url = "/posts/"
     weight = 10
   [[menu.main]]
-    identifier = "tags"
-    name = "🏷️ Tags"
-    url = "/tags/"
+    identifier = "roadmap"
+    name = "Roadmap"
+    url = "/roadmap/"
     weight = 20
   [[menu.main]]
-    identifier = "archives"
-    name = "📚 Archives"
-    url = "/archives/"
+    identifier = "about"
+    name = "About"
+    url = "/about/"
     weight = 30
   [[menu.main]]
     identifier = "search"
-    name = "🔍 Search"
+    name = "Search"
     url = "/search/"
     weight = 40
-  [[menu.main]]
-    identifier = "about"
-    name = "👤 About"
-    url = "/about/"
-    weight = 50

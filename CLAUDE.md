@@ -1,4 +1,4 @@
-# JOJO's Blog
+# Zero to One AI
 
 Hugo blog using PaperMod theme, deployed to Cloudflare Pages.
 
@@ -8,7 +8,8 @@ Hugo blog using PaperMod theme, deployed to Cloudflare Pages.
 - **Theme**: PaperMod (git submodule at `themes/PaperMod`)
 - **Domain**: `blog.crazyai.uk`
 - **Deployment**: Cloudflare Pages — push to `master` auto-deploys
-- **Language**: English only — all posts, titles, descriptions must be in English
+- **Editorial direction**: a public zero-to-one AI learning log built around experiments, mistakes, and clear explanations
+- **Language**: English by default — keep navigation and core site copy in English
 
 ## Build & Dev
 
@@ -37,7 +38,8 @@ draft: false
 1. `draft: false` must be set — Hugo skips drafts by default
 2. Do NOT use future dates — Hugo hides future posts. Use today's date or past
 3. Timezone: `+08:00` (Asia/Shanghai)
-4. All content in English
+4. Prefer English for public posts unless the author explicitly chooses a Chinese learning note
+5. Do not frame the site around the author's previous industry or job title; the subject is the AI learning journey itself
 
 ## Deploy
 

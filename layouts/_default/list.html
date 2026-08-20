@@ -1,0 +1,63 @@
+{{- define "main" }}
+
+{{- if not .IsHome | and .Title }}
+<header class="page-header folio-page-header">
+  {{- partial "breadcrumbs.html" . }}
+  <p class="folio-label">Index / {{ .Kind }}</p>
+  <h1>{{ .Title }}</h1>
+  {{- if .Description }}<div class="post-description">{{ .Description | markdownify }}</div>{{- end }}
+</header>
+{{- end }}
+
+{{- if .Content }}
+<div class="post-content md-content">
+  {{- if not (.Param "disableAnchoredHeadings") }}
+  {{- partial "anchored_headings.html" .Content -}}
+  {{- else }}{{ .Content }}{{ end }}
+</div>
+{{- end }}
+
+{{- $pages := union .RegularPages .Sections }}
+{{- if .IsHome }}
+  {{- $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
+  {{- $pages = where $pages "Params.hiddenInHomeList" "!=" "true" }}
+{{- end }}
+{{- $paginator := .Paginate $pages }}
+
+{{- if and .IsHome site.Params.homeInfoParams (eq $paginator.PageNumber 1) }}
+  {{- partial "home_info.html" . }}
+{{- end }}
+
+<section class="folio-register" aria-label="Published notes">
+{{- range $index, $page := $paginator.Pages }}
+{{- $noteNumber := sub $paginator.TotalNumberOfElements $index }}
+{{- $displayNumber := printf "%02d" $noteNumber }}
+{{- with .Params.note }}{{ $displayNumber = . }}{{- end }}
+<article class="post-entry folio-entry">
+  <div class="folio-entry-meta">
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>
+    <span>note {{ $displayNumber }}</span>
+    {{- with .Params.categories }}<span>{{ index . 0 }}</span>{{- end }}
+  </div>
+  <div class="folio-entry-body">
+    <header class="entry-header"><h2>{{ .Title }}</h2></header>
+    {{- if (ne (.Param "hideSummary") true) }}
+    <div class="entry-content"><p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}…{{ end }}</p></div>
+    {{- end }}
+  </div>
+  <span class="folio-entry-mark" aria-hidden="true">↗</span>
+  <a class="entry-link" aria-label="Read note {{ $displayNumber }}: {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+</article>
+{{- end }}
+</section>
+
+{{- if gt $paginator.TotalPages 1 }}
+<footer class="page-footer">
+  <nav class="pagination">
+    {{- if $paginator.HasPrev }}<a class="prev" href="{{ $paginator.Prev.URL | absURL }}">← Newer</a>{{- end }}
+    {{- if $paginator.HasNext }}<a class="next" href="{{ $paginator.Next.URL | absURL }}">Older →</a>{{- end }}
+  </nav>
+</footer>
+{{- end }}
+
+{{- end }}

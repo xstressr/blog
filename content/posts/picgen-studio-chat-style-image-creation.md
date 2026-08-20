@@ -2,6 +2,7 @@
 title: "Building a Chat-Style Image Creation Studio — From Form-Based Generation to Conversational AI Art"
 date: 2026-05-02T23:00:00+08:00
 draft: false
+note: "03"
 tags: ["picgen", "ai", "product-design", "nextjs", "fastapi"]
 categories: ["tech"]
 summary: "PicGen's image generation used to be a simple form: type a prompt, get an image. I just shipped a Studio that turns the whole experience into a ChatGPT-like conversation — where you talk to an AI artist, iterate on images, and build a creative thread."

@@ -1,0 +1,45 @@
+{{- define "main" }}
+
+<article class="post-single">
+  <header class="post-header">
+    {{ partial "breadcrumbs.html" . }}
+    <p class="folio-label folio-single-label">
+      {{- with .Params.note }}Note {{ . }}{{ else }}Field note{{ end }}
+      {{- with .Params.categories }} / {{ index . 0 }}{{ end }}
+    </p>
+    {{- with .Params.series }}
+    <p class="folio-series-stamp">{{ . }}{{ with $.Params.plate }} <span>/ plate {{ . }}</span>{{ end }}</p>
+    {{- end }}
+    <h1 class="post-title entry-hint-parent">{{ .Title }}</h1>
+    {{- if .Description }}<div class="post-description">{{ .Description }}</div>{{- end }}
+    {{- if not (.Param "hideMeta") }}
+    <div class="post-meta">
+      {{- partial "post_meta.html" . -}}
+      {{- partial "translation_list.html" . -}}
+      {{- partial "post_canonical.html" . -}}
+    </div>
+    {{- end }}
+  </header>
+
+  {{- $isHidden := (.Param "cover.hiddenInSingle") | default (.Param "cover.hidden") | default false }}
+  {{- partial "cover.html" (dict "cxt" . "IsSingle" true "isHidden" $isHidden) }}
+  {{- if (.Param "ShowToc") }}{{- partial "toc.html" . }}{{- end }}
+
+  {{- if .Content }}
+  <div class="post-content md-content">
+    {{- if not (.Param "disableAnchoredHeadings") }}
+    {{- partial "anchored_headings.html" .Content -}}
+    {{- else }}{{ .Content }}{{ end }}
+  </div>
+  {{- end }}
+
+  <footer class="post-footer">
+    {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
+    <ul class="post-tags">
+      {{- range ($.GetTerms $tags) }}<li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>{{- end }}
+    </ul>
+    {{- if (.Param "ShowPostNavLinks") }}{{- partial "post_nav_links.html" . }}{{- end }}
+  </footer>
+</article>
+
+{{- end }}

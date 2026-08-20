@@ -2,6 +2,7 @@
 title: "A Day of DevOps: Docker Permission Hell, Disk Cleanup, and the Turnstile Mystery"
 date: 2026-05-02T20:00:00+08:00
 draft: false
+note: "02"
 tags: ["devops", "docker", "picgen", "troubleshooting"]
 categories: ["tech"]
 summary: "What started as a simple Docker rebuild turned into a full-day adventure — fighting uv venv permissions, freeing 13GB of disk, and debugging a Cloudflare Turnstile secret that refused to work."
