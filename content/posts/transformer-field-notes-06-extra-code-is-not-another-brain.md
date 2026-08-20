@@ -9,6 +9,7 @@ description: "Production nanoGPT adds a factory around the same next-token spine
 summary: "Flash Attention, mixed precision, DDP, shards, checkpointing, and HellaSwag without pretending I trained GPT-2."
 categories: ["Transformers"]
 tags: ["nanogpt", "gpt-2", "ddp", "hellaswag", "evaluation"]
+math: true
 ---
 
 The upstream training code was much longer than my teaching implementation. My first reaction was that it must contain a more advanced model.
@@ -41,14 +42,18 @@ The extra code feeds, accelerates, distributes, evaluates, and preserves that ro
 
 ### Gradient accumulation
 
-`cross_entropy` already averages one micro-batch. PyTorch's `backward()` adds gradients. To simulate the mean of `K` micro-batches, each loss must be divided by `K` before backward:
+`cross_entropy` already averages one micro-batch. PyTorch's `backward()` adds gradients. To simulate the mean of \(K\) micro-batches, each loss must be divided by \(K\) before backward:
+
+$$
+\mathcal{L}_{\mathrm{step}} = \frac{1}{K}\sum_{k=1}^{K}\mathcal{L}_k
+$$
 
 ```python
 loss = loss / gradient_accumulation_steps
 loss.backward()
 ```
 
-Without the division, the gradient is `K` times larger.
+Without the division, the gradient is \(K\) times larger.
 
 ### DDP
 

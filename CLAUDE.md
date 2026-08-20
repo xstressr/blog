@@ -30,6 +30,7 @@ summary: "Short summary"
 categories: ["Tech"]
 tags: ["tag1", "tag2"]
 draft: false
+# math: true  # optional; loads KaTeX for this post
 ---
 ```
 
@@ -40,6 +41,7 @@ draft: false
 3. Timezone: `+08:00` (Asia/Shanghai)
 4. Prefer English for public posts unless the author explicitly chooses a Chinese learning note
 5. Do not frame the site around the author's previous industry or job title; the subject is the AI learning journey itself
+6. Add `math: true` when a post contains LaTeX. Use `\\(inline\\)` and `$$display$$` delimiters.
 
 ## Deploy
 
