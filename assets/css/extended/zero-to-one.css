@@ -110,13 +110,15 @@ a {
     position: sticky;
     top: 0;
     z-index: 20;
-    max-width: 980px;
+    max-width: 780px;
     margin: 0 auto;
     border-inline: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
     background: color-mix(in srgb, var(--paper) 94%, transparent);
     backdrop-filter: blur(8px);
 }
+
+.home .header { max-width: 980px; }
 
 .header-nav {
     min-height: 56px;
@@ -691,7 +693,7 @@ details.toc .inner {
 }
 
 .footer {
-    max-width: 980px;
+    max-width: 780px;
     margin: 0 auto;
     border: 1px solid var(--line);
     border-top: 0;
@@ -699,6 +701,8 @@ details.toc .inner {
     color: var(--ink-3);
     font-size: 9px;
 }
+
+.home .footer { max-width: 980px; }
 
 .footer > span {
     display: none;

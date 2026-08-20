@@ -6,11 +6,11 @@ theme = "PaperMod"
 [pagination]
   pagerSize = 10
 
-# 启用 Emoji
+# Enable emoji rendering
 enableEmoji = true
-# 启用 robots.txt
+# Generate robots.txt
 enableRobotsTXT = true
-# 启用 Git 信息
+# Include Git metadata
 enableGitInfo = true
 
 [params]

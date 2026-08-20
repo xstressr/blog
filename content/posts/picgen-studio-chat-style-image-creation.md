@@ -20,7 +20,7 @@ PicGen has had text-to-image and image-to-image generation for a while. The work
 
 It worked. But it felt... transactional. Like filling out a tax form that happens to produce pictures.
 
-Every generation was a one-shot interaction. Want to iterate on a result? Go to history, find the image, click "continue creation," get redirected to the image-to-image page, re-read your old prompt, tweak it, generate again. Each step was a context switch. The creative flow kept getting打断.
+Every generation was a one-shot interaction. Want to iterate on a result? Go to history, find the image, click "continue creation," get redirected to the image-to-image page, re-read your old prompt, tweak it, generate again. Each step was a context switch. The creative flow kept getting interrupted.
 
 What I actually wanted was something like this:
 

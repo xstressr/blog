@@ -1,6 +1,6 @@
 ---
-title: "📚 归档"
+title: "Archive"
 layout: "archives"
 url: "/archives/"
-summary: "archives"
+summary: "Every note, in chronological order."
 ---
