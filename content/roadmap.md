@@ -35,8 +35,9 @@ This is a living map, not a syllabus I need to finish perfectly. Each stage shou
 - Tokenization, embeddings, and positional information
 - Reproducing GPT-style training from first principles
 - Scaling, batching, checkpoints, and evaluation
+- Exporting learned weights and tracing token-by-token inference in C
 
-Current folio: [Transformer Field Notes I — The Batch Is a Factory of Futures](/posts/transformer-field-notes-01-batch-factory-of-futures/) through [VI — The Extra Code Is Not Another Brain](/posts/transformer-field-notes-06-extra-code-is-not-another-brain/).
+Published sequence: [Transformer Field Notes I — The Batch Is a Factory of Futures](/posts/transformer-field-notes-01-batch-factory-of-futures/) through [VI — The Extra Code Is Not Another Brain](/posts/transformer-field-notes-06-extra-code-is-not-another-brain/), followed by [Inference Field Notes I — The Model File Has No Names](/posts/inference-field-notes-01-the-model-file-has-no-names/).
 
 ## 04 · AI systems
 
