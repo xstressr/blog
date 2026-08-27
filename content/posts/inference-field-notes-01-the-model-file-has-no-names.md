@@ -199,3 +199,5 @@ I have now consumed a pretrained export from end to end. I have not yet produced
 
 The model file has no names. The code gives every byte a role.
 
+The unpaid debt is the other half of the same bridge: C that *trains*, and a Python file that prints the numbers it must match. That is [C Field Notes I: Python Writes the Answer Sheet](/posts/c-field-notes-01-python-writes-the-answer-sheet/).
+

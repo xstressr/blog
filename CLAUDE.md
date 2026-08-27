@@ -42,6 +42,7 @@ draft: false
 4. Prefer English for public posts unless the author explicitly chooses a Chinese learning note
 5. Do not frame the site around the author's previous industry or job title; the subject is the AI learning journey itself
 6. Add `math: true` when a post contains LaTeX. Use `\\(inline\\)` and `$$display$$` delimiters.
+7. Folio series posts set `note`, `series`, and `plate` (for example `"I / IV"`). Pair `folio-card` shortcodes. State evidence boundaries: what ran, what was only read.
 
 ## Deploy
 
@@ -58,11 +59,23 @@ git push    # Cloudflare Pages auto-deploys
 
 ## Existing Posts
 
-| File | Title | Date |
-|------|-------|------|
-| `hello-world.md` | Hello World | 2026-04-29 |
-| `picgen-devops-day.md` | A Day of DevOps | 2026-05-02 |
-| `picgen-studio-chat-style-image-creation.md` | Building a Chat-Style Image Creation Studio | 2026-05-02 |
+Keep this table in date order when adding a post. `note` numbers are explicit frontmatter, not automatic.
+
+| File | Title | Date | note |
+|------|-------|------|------|
+| `hello-world.md` | Hello World | 2026-04-29 | 01 |
+| `picgen-devops-day.md` | A Day of DevOps | 2026-05-02 | 02 |
+| `picgen-studio-chat-style-image-creation.md` | Building a Chat-Style Image Creation Studio | 2026-05-02 | 03 |
+| `picgen-prompt-examples-and-reference-image-entry.md` | From Blank Canvas to Guided Creation | 2026-05-04 | 04 |
+| `transformer-field-notes-01-batch-factory-of-futures.md` | The Batch Is a Factory of Futures | 2026-08-20 | 05 |
+| `transformer-field-notes-02-four-ways-to-average-the-past.md` | Four Ways to Average the Past | 2026-08-20 | 06 |
+| `transformer-field-notes-03-residual-stream-is-the-model.md` | The Residual Stream Is the Model | 2026-08-20 | 07 |
+| `transformer-field-notes-04-live-wire-is-not-a-language.md` | A Live Wire Is Not a Language | 2026-08-20 | 08 |
+| `transformer-field-notes-05-width-paid-context-lied.md` | Width Paid, Context Lied, Last Step Lost | 2026-08-20 | 09 |
+| `transformer-field-notes-06-extra-code-is-not-another-brain.md` | The Extra Code Is Not Another Brain | 2026-08-20 | 10 |
+| `inference-field-notes-01-the-model-file-has-no-names.md` | The Model File Has No Names | 2026-08-22 | 11 |
+| `c-field-notes-01-python-writes-the-answer-sheet.md` | Python Writes the Answer Sheet | 2026-08-27 | 12 |
+| `c-field-notes-02-there-is-no-autograd-here.md` | There Is No Autograd Here | 2026-08-27 | 13 |
 
 ## Pitfalls
 

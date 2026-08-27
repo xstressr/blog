@@ -117,4 +117,4 @@ next-token prediction
 → evaluation that matches the model
 ```
 
-The next folio will leave Python's training desk and follow a single token through a lower-level inference loop—where the unpaid debt is no longer attention, but the KV cache.
+The next folio leaves Python's training desk and follows a single token through a lower-level inference loop—where the unpaid debt is no longer attention, but the KV cache. That work is now [Inference Field Notes I: The Model File Has No Names](/posts/inference-field-notes-01-the-model-file-has-no-names/).

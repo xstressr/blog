@@ -36,8 +36,11 @@ This is a living map, not a syllabus I need to finish perfectly. Each stage shou
 - Reproducing GPT-style training from first principles
 - Scaling, batching, checkpoints, and evaluation
 - Exporting learned weights and tracing token-by-token inference in C
+- Handwritten GPT-2 training in C, graded against a Python answer sheet
 
-Published sequence: [Transformer Field Notes I — The Batch Is a Factory of Futures](/posts/transformer-field-notes-01-batch-factory-of-futures/) through [VI — The Extra Code Is Not Another Brain](/posts/transformer-field-notes-06-extra-code-is-not-another-brain/), followed by [Inference Field Notes I — The Model File Has No Names](/posts/inference-field-notes-01-the-model-file-has-no-names/).
+Published sequence: [Transformer Field Notes I — The Batch Is a Factory of Futures](/posts/transformer-field-notes-01-batch-factory-of-futures/) through [VI — The Extra Code Is Not Another Brain](/posts/transformer-field-notes-06-extra-code-is-not-another-brain/), then [Inference Field Notes I — The Model File Has No Names](/posts/inference-field-notes-01-the-model-file-has-no-names/).
+
+Current folio: [C Field Notes I — Python Writes the Answer Sheet](/posts/c-field-notes-01-python-writes-the-answer-sheet/) through [II — There Is No Autograd Here](/posts/c-field-notes-02-there-is-no-autograd-here/).
 
 ## 04 · AI systems
 
