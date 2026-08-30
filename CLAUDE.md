@@ -76,6 +76,9 @@ Keep this table in date order when adding a post. `note` numbers are explicit fr
 | `inference-field-notes-01-the-model-file-has-no-names.md` | The Model File Has No Names | 2026-08-22 | 11 |
 | `c-field-notes-01-python-writes-the-answer-sheet.md` | Python Writes the Answer Sheet | 2026-08-27 | 12 |
 | `c-field-notes-02-there-is-no-autograd-here.md` | There Is No Autograd Here | 2026-08-27 | 13 |
+| `adapter-field-notes-01-the-loss-is-not-the-task.md` | The Loss Is Not the Task | 2026-08-30 | 14 |
+| `adapter-field-notes-02-the-mask-is-the-objective.md` | The Mask Is the Objective | 2026-08-30 | 15 |
+| `adapter-field-notes-03-scale-bought-the-base.md` | Scale Bought the Base | 2026-08-30 | 16 |
 
 ## Pitfalls
 

@@ -123,4 +123,6 @@ layout contract + one-token loop
 
 The spine from the Transformer folio is still the spine. What changed is the runtime: mmap instead of `state_dict`, a cache instead of a batched window, and gradients that exist only because someone wrote them.
 
-The unpaid debt is no longer conceptual. It is a machine: compile the CPU 41-step check, then see whether a 6GB card can move the same loop without breaking the contract.
+The unpaid debt on this desk is still a machine: compile the CPU 41-step check, then see whether a 6GB card can move the same loop without breaking the contract.
+
+A later folio left the C trainer and scored adapters by frozen behavior tests instead of teacher-forced loss. That is [Adapter Field Notes I: The Loss Is Not the Task](/posts/adapter-field-notes-01-the-loss-is-not-the-task/).

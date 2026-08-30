@@ -53,9 +53,11 @@ Current folio: [C Field Notes I — Python Writes the Answer Sheet](/posts/c-fie
 
 ## 05 · Original work
 
-**Status: later**
+**Status: in progress**
 
 - Form a testable question
 - Build the smallest credible experiment
 - Publish the method, failures, and result
 - Let the evidence—not the novelty claim—carry the work
+
+Published sequence: [Adapter Field Notes I — The Loss Is Not the Task](/posts/adapter-field-notes-01-the-loss-is-not-the-task/) through [III — Scale Bought the Base](/posts/adapter-field-notes-03-scale-bought-the-base/). One Colab A100, Qwen3 QLoRA and a ViT classifier, frozen 128-row evals. Not a production RAG system, and not a claim that bigger adapters win.
