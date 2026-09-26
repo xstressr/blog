@@ -53,7 +53,6 @@ enableGitInfo = true
 
   [params.assets]
     favicon = "/favicon.ico"
-    disableFingerprinting = true
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]

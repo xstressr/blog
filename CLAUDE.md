@@ -87,4 +87,5 @@ Keep this table in date order when adding a post. `note` numbers are explicit fr
 - **Git submodule on CF Pages**: Build command MUST include `git submodule update --init --recursive`
 - **Future posts**: Hugo skips them. Use current or past dates
 - **Bot Fight Mode**: Cloudflare may block `curl`/bot requests with 403. Site works fine in browsers
+- **CSS caching**: keep asset fingerprinting on (no `disableFingerprinting` in `hugo.toml`). A fixed `/assets/css/stylesheet.css` URL gets cached by the Cloudflare edge and browsers, so new HTML ships with old CSS
 - **`public/` is gitignored**: CF Pages builds from source, don't commit build output
