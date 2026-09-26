@@ -1,5 +1,6 @@
 {{- define "main" }}
 
+<div class="folio-progress" aria-hidden="true"></div>
 <article class="post-single">
   <header class="post-header">
     {{ partial "breadcrumbs.html" . }}
@@ -8,7 +9,7 @@
       {{- with .Params.categories }} / {{ index . 0 }}{{ end }}
     </p>
     {{- with .Params.series }}
-    <p class="folio-series-stamp">{{ . }}{{ with $.Params.plate }} <span>/ plate {{ . }}</span>{{ end }}</p>
+    <p class="folio-series-stamp"><a href="#in-this-folio">{{ . }}</a>{{ with $.Params.plate }} <span>/ plate {{ . }}</span>{{ end }}</p>
     {{- end }}
     <h1 class="post-title entry-hint-parent">{{ .Title }}</h1>
     {{- if .Description }}<div class="post-description">{{ .Description }}</div>{{- end }}
@@ -31,6 +32,24 @@
     {{- partial "anchored_headings.html" .Content -}}
     {{- else }}{{ .Content }}{{ end }}
   </div>
+  {{- end }}
+
+  {{- with .Params.series }}
+  {{- $plates := where (where site.RegularPages "Type" "in" site.Params.mainSections) "Params.series" . }}
+  <nav class="folio-series-nav" id="in-this-folio" aria-label="{{ . }}">
+    <p class="folio-label">In this folio <span>· {{ . }}</span></p>
+    <ol>
+      {{- range $plates.ByDate }}
+      {{- $current := eq .RelPermalink $.RelPermalink }}
+      <li{{ if $current }} class="is-current"{{ end }}>
+        <a href="{{ .RelPermalink }}"{{ if $current }} aria-current="page"{{ end }}>
+          <span class="folio-series-plate">{{ with .Params.plate }}{{ index (split . " / ") 0 }}{{ else }}·{{ end }}</span>
+          <span class="folio-series-title">{{ .Title }}</span>
+        </a>
+      </li>
+      {{- end }}
+    </ol>
+  </nav>
   {{- end }}
 
   <footer class="post-footer">
