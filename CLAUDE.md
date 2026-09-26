@@ -43,6 +43,8 @@ draft: false
 5. Do not frame the site around the author's previous industry or job title; the subject is the AI learning journey itself
 6. Add `math: true` when a post contains LaTeX. Use `\\(inline\\)` and `$$display$$` delimiters.
 7. Folio series posts set `note`, `series`, and `plate` (for example `"I / IV"`). Pair `folio-card` shortcodes. State evidence boundaries: what ran, what was only read.
+8. The home page "Now" card and "The route so far" strip are generated from `series` and `date` — no manual edits needed when a new folio starts. Posts without `series` are grouped as "Loose notes".
+9. Share images (`og:image`) are typeset automatically from `note`, `series`, `plate`, and `title` (`layouts/partials/folio-og-image.html`). Set `cover.image` only to override it.
 
 ## Deploy
 

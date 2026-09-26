@@ -1,3 +1,22 @@
+{{- $posts := where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{- $posts = where $posts "Params.hiddenInHomeList" "!=" "true" }}
+
+{{- /* Each series is one stop on the route; notes without a series share one stop. */}}
+{{- $stops := slice }}
+{{- $loose := where $posts "Params.series" "==" nil }}
+{{- with $loose.ByDate }}
+  {{- $stops = $stops | append (dict "name" "Loose notes" "unit" "note" "pages" . "start" (index . 0).Date.Unix) }}
+{{- end }}
+{{- range (where $posts "Params.series" "!=" nil).GroupByParam "series" }}
+  {{- $pages := .Pages.ByDate }}
+  {{- $stops = $stops | append (dict "name" .Key "unit" "plate" "pages" $pages "start" (index $pages 0).Date.Unix) }}
+{{- end }}
+{{- $stops = sort $stops "start" }}
+
+{{- $newest := index $posts.ByDate.Reverse 0 }}
+{{- $currentName := "" }}
+{{- with $newest }}{{ $currentName = .Params.series | default "Loose notes" }}{{ end }}
+
 <article class="home-info folio-home">
     <section class="folio-title-block" aria-labelledby="folio-title">
         <p class="folio-volume">Volume 01 <span>·</span> A public learning log <span>·</span> 2026—</p>
@@ -6,23 +25,51 @@
                 <h1 id="folio-title">Learning how<br><em>machines learn.</em></h1>
                 <p>I read the ideas, rebuild the small parts, and write down what actually changed my mind.</p>
             </div>
+            {{- with $newest }}
             <aside class="folio-now" aria-label="Current learning status">
-                <p class="folio-label">Now / 05</p>
-                <h2>Adapter Field Notes</h2>
+                <p class="folio-label"><span class="folio-now-pulse" aria-hidden="true"></span>Now / {{ printf "%02d" (len $stops) }}</p>
+                <h2>{{ $currentName }}</h2>
                 <dl>
                     <div>
-                        <dt>Current study</dt>
-                        <dd>Measuring QLoRA by frozen evals, not by loss</dd>
+                        <dt>Latest {{ if .Params.series }}plate{{ else }}note{{ end }}{{ with .Params.plate }} · {{ . }}{{ end }}</dt>
+                        <dd><a href="{{ .RelPermalink }}">{{ .Title }}</a></dd>
                     </div>
                     <div>
-                        <dt>Latest folio</dt>
-                        <dd>One A100, three tasks, three times the loss picked the wrong checkpoint</dd>
+                        <dt>What it found</dt>
+                        <dd>{{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify | htmlUnescape | truncate 160 }}{{ end }}</dd>
                     </div>
                 </dl>
             </aside>
+            {{- end }}
         </div>
         <p class="folio-principle">A note is not finished when it sounds clear. It is finished when an experiment leaves evidence behind.</p>
     </section>
+
+    {{- with $stops }}
+    <section class="folio-route" aria-labelledby="folio-route-title">
+        <header class="folio-route-heading">
+            <p class="folio-label" id="folio-route-title">The route so far</p>
+            <a href="{{ "roadmap/" | relURL }}">Roadmap →</a>
+        </header>
+        <ol class="folio-route-list">
+            {{- range $i, $stop := . }}
+            {{- $first := index $stop.pages 0 }}
+            {{- $last := index (last 1 $stop.pages) 0 }}
+            {{- $count := len $stop.pages }}
+            <li class="folio-stop{{ if eq $stop.name $currentName }} is-current{{ end }}" style="--i: {{ $i }}">
+                <span class="folio-stop-index">{{ printf "%02d" (add $i 1) }}</span>
+                <a class="folio-stop-name" href="{{ $first.RelPermalink }}">{{ $stop.name }}</a>
+                <span class="folio-stop-dots">
+                    {{- range $stop.pages }}
+                    <a href="{{ .RelPermalink }}" title="{{ .Title }}" aria-label="{{ .Title }}"></a>
+                    {{- end }}
+                </span>
+                <span class="folio-stop-meta">{{ $count }} {{ $stop.unit }}{{ if ne $count 1 }}s{{ end }} · {{ if ne ($first.Date.Format "Jan") ($last.Date.Format "Jan") }}{{ $first.Date.Format "Jan" }}–{{ end }}{{ $last.Date.Format "Jan 2006" }}</span>
+            </li>
+            {{- end }}
+        </ol>
+    </section>
+    {{- end }}
 
     <header class="folio-register-heading">
         <div>

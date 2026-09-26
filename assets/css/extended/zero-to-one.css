@@ -62,6 +62,8 @@
     --code-block-bg: #27211b;
     --code-bg: var(--paper-2);
     --border: var(--line);
+    --ease-ink: cubic-bezier(0.2, 0.7, 0.2, 1);
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .36 0 0 0 0 .27 0 0 0 0 .16 .16 0 0 0 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
     color-scheme: light;
 }
 
@@ -84,6 +86,7 @@
     --code-block-bg: #100d0b;
     --code-bg: var(--paper-2);
     --border: var(--line);
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .93 0 0 0 0 .9 0 0 0 0 .84 .07 0 0 0 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
     color-scheme: dark;
 }
 
@@ -158,6 +161,7 @@ a {
     border-radius: 50%;
     color: var(--vermilion);
     font-size: 9px;
+    line-height: 1;
     letter-spacing: 0;
 }
 
@@ -165,8 +169,10 @@ a {
 
 .menu a {
     color: var(--ink-2);
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 400;
+    text-decoration-color: transparent;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
 }
 
 .menu a:hover,
@@ -176,7 +182,15 @@ a {
     text-decoration-color: var(--vermilion);
 }
 
-.theme-toggle { color: var(--ink-3); }
+.theme-toggle {
+    color: var(--ink-3);
+    transition: color 0.2s ease, transform 0.45s var(--ease-ink);
+}
+
+.theme-toggle:hover {
+    color: var(--vermilion);
+    transform: rotate(-24deg);
+}
 
 .main {
     position: relative;
@@ -185,7 +199,7 @@ a {
     margin: 0 auto;
     padding: 64px 62px 88px;
     border-inline: 1px solid var(--line);
-    background: linear-gradient(90deg, transparent 0, rgba(124, 98, 64, 0.025) 48%, transparent 100%), var(--paper);
+    background: var(--grain), linear-gradient(90deg, transparent 0, rgba(124, 98, 64, 0.025) 48%, transparent 100%), var(--paper);
 }
 
 .home .main {
@@ -201,6 +215,8 @@ a {
     left: 64px;
     width: 2px;
     background: var(--vermilion);
+    transform-origin: top;
+    animation: folio-draw 1.2s var(--ease-ink) 0.1s both;
 }
 
 .home-info.folio-home {
@@ -217,7 +233,7 @@ a {
 .folio-volume {
     margin: 0 0 42px;
     color: var(--ink-3);
-    font-size: 10px;
+    font-size: 11px;
     line-height: 1.5;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -263,7 +279,7 @@ a {
 .folio-label {
     margin: 0;
     color: var(--vermilion);
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -289,7 +305,7 @@ a {
     margin-bottom: 5px;
     color: var(--ink-3);
     font-family: "IBM Plex Mono", SFMono-Regular, Consolas, monospace;
-    font-size: 9px;
+    font-size: 11px;
     letter-spacing: 0.06em;
     text-transform: uppercase;
 }
@@ -299,6 +315,39 @@ a {
     color: var(--ink-2);
     font-size: 15px;
     line-height: 1.38;
+}
+
+.folio-now dd a {
+    color: var(--ink);
+    font-size: 17px;
+    text-decoration: underline;
+    text-decoration-color: var(--vermilion-soft);
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.folio-now dd a:hover {
+    color: var(--vermilion);
+    text-decoration-color: var(--vermilion);
+}
+
+.folio-now-pulse {
+    position: relative;
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: 9px;
+    border-radius: 50%;
+    background: var(--vermilion);
+    vertical-align: 1px;
+}
+
+.folio-now-pulse::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: var(--vermilion);
+    animation: folio-pulse 2.4s ease-out infinite;
 }
 
 .folio-principle {
@@ -338,20 +387,135 @@ a {
     letter-spacing: -0.025em;
 }
 
-.folio-register-heading a {
+.folio-register-heading a,
+.folio-route-heading a {
     flex: none;
     color: var(--ink-3);
     font-family: "IBM Plex Mono", monospace;
-    font-size: 10px;
+    font-size: 12px;
+    transition: color 0.2s ease;
 }
 
-.folio-register-heading a:hover { color: var(--vermilion); }
+.folio-register-heading a:hover,
+.folio-route-heading a:hover { color: var(--vermilion); }
 .folio-register { border-top: 1px solid var(--ink); }
 
+/* The route: one stop per folio, drawn like a line on a map. */
+.folio-route {
+    padding: 44px 0 46px;
+    border-bottom: 1px solid var(--line);
+}
+
+.folio-route-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    margin-bottom: 22px;
+}
+
+.folio-route-list {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(148px, 1fr);
+    margin: 0;
+    padding: 0 0 6px;
+    overflow-x: auto;
+    list-style: none;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+}
+
+.folio-stop {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 22px 18px 0 0;
+    border-top: 1px solid var(--line);
+    scroll-snap-align: start;
+    animation: folio-rise 0.6s var(--ease-ink) both;
+    animation-delay: calc(0.25s + var(--i, 0) * 90ms);
+}
+
+.folio-stop::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: 0;
+    width: 9px;
+    height: 9px;
+    border: 1px solid var(--ink-3);
+    border-radius: 50%;
+    background: var(--paper);
+}
+
+.folio-stop.is-current { border-top-color: var(--vermilion); }
+
+.folio-stop.is-current::before {
+    border-color: var(--vermilion);
+    background: var(--vermilion);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--vermilion) 18%, transparent);
+}
+
+.folio-stop-index,
+.folio-stop-meta {
+    color: var(--ink-3);
+    font-family: "IBM Plex Mono", SFMono-Regular, Consolas, monospace;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+}
+
+.folio-stop.is-current .folio-stop-index { color: var(--vermilion); }
+
+.folio-stop-name {
+    color: var(--ink);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.folio-stop-name:hover { color: var(--vermilion); }
+
+.folio-stop-dots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    margin: 2px 0 0 -4px;
+}
+
+.folio-stop-dots a {
+    display: grid;
+    place-items: center;
+    width: 16px;
+    height: 16px;
+}
+
+.folio-stop-dots a::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--ink-3);
+    transition: transform 0.25s var(--ease-ink), background 0.2s ease;
+}
+
+.folio-stop.is-current .folio-stop-dots a::before { background: var(--vermilion); }
+
+.folio-stop-dots a:hover::before,
+.folio-stop-dots a:focus-visible::before {
+    background: var(--vermilion);
+    transform: scale(1.6);
+}
+
+/* The register */
 .folio-entry.post-entry {
     position: relative;
     display: grid;
-    grid-template-columns: 128px minmax(0, 1fr) 22px;
+    grid-template-columns: 136px minmax(0, 1fr) 22px;
     gap: 24px;
     min-height: 0;
     margin: 0;
@@ -361,6 +525,8 @@ a {
     border-radius: 0;
     background: transparent;
     transition: none;
+    animation: folio-rise 0.55s var(--ease-ink) both;
+    animation-delay: calc(min(var(--i, 0), 8) * 60ms);
 }
 
 .folio-entry.post-entry::before {
@@ -370,7 +536,9 @@ a {
     bottom: 0;
     left: -40px;
     width: 2px;
-    background: transparent;
+    background: var(--vermilion);
+    transform: scaleY(0);
+    transition: transform 0.4s var(--ease-ink);
 }
 
 .folio-entry.post-entry:hover,
@@ -380,7 +548,7 @@ a {
 }
 
 .folio-entry.post-entry:hover::before,
-.folio-entry.post-entry:focus-within::before { background: var(--vermilion); }
+.folio-entry.post-entry:focus-within::before { transform: scaleY(1); }
 
 .folio-entry-meta {
     display: flex;
@@ -388,13 +556,23 @@ a {
     gap: 6px;
     padding-top: 4px;
     color: var(--ink-3);
-    font-size: 9px;
+    font-size: 11px;
     line-height: 1.35;
     letter-spacing: 0.04em;
     text-transform: uppercase;
 }
 
-.folio-entry-meta span:nth-child(2) { color: var(--vermilion); }
+.folio-entry-meta .folio-entry-note { color: var(--vermilion); }
+
+.folio-entry-flag {
+    align-self: flex-start;
+    padding: 2px 7px 1px;
+    border: 1px solid var(--vermilion);
+    border-radius: 2px;
+    color: var(--vermilion);
+    font-weight: 500;
+    transform: rotate(-2deg);
+}
 
 .folio-entry .entry-header h2 {
     margin: 0;
@@ -403,6 +581,14 @@ a {
     font-weight: 500;
     line-height: 1.2;
     letter-spacing: -0.025em;
+    transition: color 0.2s ease;
+}
+
+.folio-entry .entry-header h2 span {
+    background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    transition: background-size 0.45s var(--ease-ink);
 }
 
 .folio-entry .entry-content {
@@ -420,15 +606,35 @@ a {
     padding-top: 3px;
     color: var(--ink-3);
     font-family: "IBM Plex Mono", monospace;
-    font-size: 12px;
+    font-size: 13px;
+    transition: transform 0.35s var(--ease-ink), color 0.2s ease;
 }
 
 .folio-entry:hover .entry-header h2,
-.folio-entry:focus-within .entry-header h2 {
+.folio-entry:focus-within .entry-header h2 { color: var(--vermilion); }
+
+.folio-entry:hover .entry-header h2 span,
+.folio-entry:focus-within .entry-header h2 span { background-size: 100% 1px; }
+
+.folio-entry:hover .folio-entry-mark,
+.folio-entry:focus-within .folio-entry-mark {
     color: var(--vermilion);
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 4px;
+    transform: translate(3px, -3px);
+}
+
+.folio-entry.is-latest { padding: 34px 0 36px; }
+
+.folio-entry.is-latest .entry-header h2 {
+    font-size: 32px;
+    line-height: 1.12;
+    letter-spacing: -0.035em;
+}
+
+.folio-entry.is-latest .entry-content {
+    margin-top: 12px;
+    font-size: 18px;
+    font-style: italic;
+    line-height: 1.5;
 }
 
 .entry-link { border-radius: 0; }
@@ -476,9 +682,21 @@ a {
     margin: 14px 0 -4px;
     color: var(--ink-3);
     font-family: "IBM Plex Mono", SFMono-Regular, Consolas, monospace;
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 0.07em;
     text-transform: uppercase;
+}
+
+.folio-series-stamp a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--line);
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.folio-series-stamp a:hover {
+    color: var(--vermilion);
+    text-decoration-color: var(--vermilion);
 }
 
 .folio-series-stamp span { color: var(--vermilion); }
@@ -494,7 +712,7 @@ a {
 .post-meta,
 .breadcrumbs {
     color: var(--ink-3);
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 0.03em;
 }
 
@@ -533,7 +751,7 @@ a {
 }
 
 .folio-card {
-    margin: 2em 0;
+    margin: 2.4em 0 2em;
     padding: 0;
     border-top: 1px solid var(--vermilion);
     border-bottom: 1px solid var(--line);
@@ -541,19 +759,24 @@ a {
 }
 
 .folio-card-label {
-    margin: 0 !important;
-    padding: 9px 14px 8px;
-    border-bottom: 1px solid var(--line);
+    display: inline-block;
+    margin: -12px 0 0 16px !important;
+    padding: 3px 10px 2px;
+    border: 1px solid var(--vermilion);
+    border-radius: 2px;
+    background: var(--paper);
     color: var(--vermilion);
     font-family: "IBM Plex Mono", SFMono-Regular, Consolas, monospace;
-    font-size: 9px;
+    font-size: 11px;
+    line-height: 1.5;
+    transform: rotate(-1.2deg);
     font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
 
 .folio-card-body {
-    padding: 16px 18px 4px;
+    padding: 12px 18px 4px;
     color: var(--ink-2);
     font-size: 16px;
     line-height: 1.55;
@@ -564,12 +787,12 @@ a {
 
 .post-content table {
     font-family: "IBM Plex Mono", SFMono-Regular, Consolas, monospace;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .post-content th {
     color: var(--ink-3);
-    font-size: 9px;
+    font-size: 11px;
     letter-spacing: 0.05em;
     text-transform: uppercase;
 }
@@ -602,6 +825,77 @@ a {
     font-size: 1.05em;
 }
 
+.folio-series-nav {
+    margin: 56px 0 8px;
+    padding-top: 18px;
+    border-top: 1px solid var(--ink);
+}
+
+.folio-series-nav .folio-label span { color: var(--ink-3); }
+
+.folio-series-nav ol {
+    margin: 14px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.folio-series-nav li { border-bottom: 1px solid var(--line); }
+
+.folio-series-nav a {
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 12px;
+    align-items: baseline;
+    padding: 12px 0;
+    color: var(--ink-2);
+    font-size: 17px;
+    line-height: 1.3;
+    text-decoration: none;
+    transition: color 0.2s ease, padding-left 0.3s var(--ease-ink);
+}
+
+.folio-series-plate {
+    color: var(--ink-3);
+    font-family: "IBM Plex Mono", SFMono-Regular, Consolas, monospace;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+}
+
+.folio-series-nav a:hover {
+    padding-left: 6px;
+    color: var(--vermilion);
+}
+
+.folio-series-nav .is-current a { color: var(--ink); }
+
+.folio-series-nav .is-current .folio-series-plate { color: var(--vermilion); }
+
+.folio-series-nav .is-current .folio-series-title::after {
+    content: "  ← you are here";
+    color: var(--ink-3);
+    font-family: "IBM Plex Mono", SFMono-Regular, Consolas, monospace;
+    font-size: 11px;
+    white-space: pre;
+}
+
+.folio-progress { display: none; }
+
+@supports (animation-timeline: scroll()) {
+    .folio-progress {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 30;
+        display: block;
+        height: 2px;
+        background: var(--vermilion);
+        transform: scaleX(0);
+        transform-origin: 0 50%;
+        pointer-events: none;
+        animation: folio-progress linear both;
+        animation-timeline: scroll(root);
+    }
+}
+
 details.toc,
 [data-theme="dark"] details.toc {
     margin: 28px 0;
@@ -610,7 +904,7 @@ details.toc,
     border-radius: 0;
     background: transparent;
     font-family: "IBM Plex Mono", monospace;
-    font-size: 11px;
+    font-size: 13px;
 }
 
 details.toc summary {
@@ -627,7 +921,8 @@ details.toc .inner {
     border-radius: 2px;
     background: transparent;
     color: var(--ink-2);
-    font-size: 10px;
+    font-size: 12px;
+    transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .post-tags a:hover {
@@ -691,7 +986,7 @@ details.toc .inner {
 .archive-count {
     color: var(--ink-3);
     font-family: "IBM Plex Mono", monospace;
-    font-size: 9px;
+    font-size: 11px;
 }
 
 .terms-tags a {
@@ -700,7 +995,7 @@ details.toc .inner {
     background: transparent;
     color: var(--ink-2);
     font-family: "IBM Plex Mono", monospace;
-    font-size: 11px;
+    font-size: 12px;
 }
 
 .footer {
@@ -710,19 +1005,15 @@ details.toc .inner {
     border-top: 0;
     background: var(--paper);
     color: var(--ink-3);
-    font-size: 9px;
+    /* Zero size hides PaperMod's bare " · " separator; only the copyright span is shown. */
+    font-size: 0;
 }
 
 .home .footer { max-width: 980px; }
 
-.footer > span {
-    display: none;
-}
+.footer > span:first-child { font-size: 11px; }
 
-.footer::before {
-    content: "Volume 01 · Zero to One AI · Typeset in public";
-    font-size: 9px;
-}
+.footer > span:not(:first-child) { display: none; }
 
 .footer a:hover { color: var(--vermilion); }
 
@@ -740,7 +1031,7 @@ details.toc .inner {
 
     .header-nav { padding: 0 18px; }
     .menu { gap: 18px; }
-    .menu a { font-size: 10px; }
+    .menu a { font-size: 12px; }
 
     .home .main,
     .main { padding: 48px 24px 72px 44px; }
@@ -786,6 +1077,10 @@ details.toc .inner {
     }
 
     .folio-entry-body { grid-column: 1; }
+    .folio-entry.is-latest .entry-header h2 { font-size: 27px; }
+    .folio-entry.is-latest .entry-content { font-size: 17px; }
+    .folio-route { padding: 36px 0 38px; }
+    .folio-route-list { margin-right: -24px; padding-right: 24px; }
     .folio-entry-mark { grid-column: 2; }
     .folio-entry .entry-header h2 { font-size: 22px; }
     .post-title { font-size: 38px; }
@@ -807,13 +1102,46 @@ details.toc .inner {
         overflow: hidden;
     }
 
-    .logo a::before,
-    .theme-toggle { display: none; }
+    .logo a::before { display: none; }
 
+    .logo { flex: none; }
     .logo a { font-size: 12px; }
-    .menu { gap: 14px; }
-    .menu a { font-size: 9px; }
+    .theme-toggle { padding: 0 0 0 2px; }
+    .menu { gap: 12px; min-width: 0; }
+    .menu a { font-size: 11px; }
     .folio-register-heading a { display: none; }
+    .folio-series-nav .is-current .folio-series-title::after { content: none; }
+}
+
+@keyframes folio-draw {
+    from { transform: scaleY(0); }
+    to { transform: scaleY(1); }
+}
+
+@keyframes folio-rise {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes folio-pulse {
+    from {
+        opacity: 0.55;
+        transform: scale(1);
+    }
+    70%, to {
+        opacity: 0;
+        transform: scale(2.8);
+    }
+}
+
+@keyframes folio-progress {
+    to { transform: scaleX(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -821,4 +1149,9 @@ details.toc .inner {
         scroll-behavior: auto !important;
         transition-duration: 0.01ms !important;
     }
+
+    .home .main::before,
+    .folio-entry.post-entry,
+    .folio-stop,
+    .folio-now-pulse::after { animation: none !important; }
 }

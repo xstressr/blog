@@ -1,0 +1,27 @@
+{{- /* Typeset a 1200×630 share card for pages without a cover image. Returns the image resource, or false. */ -}}
+{{- $img := false }}
+{{- $base := resources.Get "og/folio-base.png" }}
+{{- $serif := resources.Get "fonts/newsreader-medium.ttf" }}
+{{- $mono := resources.Get "fonts/ibm-plex-mono-medium.ttf" }}
+{{- if and $base $serif $mono }}
+  {{- $kicker := "Zero to One AI" }}
+  {{- $title := .Title | default site.Title | plainify | htmlUnescape }}
+  {{- if .IsHome }}
+    {{- $kicker = "Volume 01 · A public learning log" }}
+    {{- $title = "Learning how machines learn." }}
+  {{- else if .IsPage }}
+    {{- $parts := slice }}
+    {{- with .Params.note }}{{ $parts = $parts | append (printf "Note %v" .) }}{{ end }}
+    {{- with .Params.series }}{{ $parts = $parts | append . }}{{ end }}
+    {{- with .Params.plate }}{{ $parts = $parts | append (printf "Plate %v" .) }}{{ end }}
+    {{- with $parts }}{{ $kicker = delimit . " · " }}{{ end }}
+  {{- end }}
+  {{- $filters := slice
+    (images.Text (upper $kicker) (dict "font" $mono "size" 24 "color" "#c4452d" "x" 112 "y" 100))
+    (images.Text $title (dict "font" $serif "size" 72 "linespacing" 12 "color" "#1c1915" "x" 112 "y" 164))
+    (images.Text "ZERO TO ONE AI  ·  BLOG.CRAZYAI.UK" (dict "font" $mono "size" 20 "color" "#8a8276" "x" 112 "y" 520))
+    (images.Padding 0 96 0 0 "#f4efe4")
+  }}
+  {{- $img = $base | images.Filter $filters }}
+{{- end }}
+{{- return $img }}

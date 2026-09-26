@@ -3,6 +3,7 @@ languageCode = "en"
 defaultContentLanguage = "en"
 title = "Zero to One AI"
 theme = "PaperMod"
+copyright = "Volume 01 · Zero to One AI · Typeset in public"
 [pagination]
   pagerSize = 10
 

@@ -33,16 +33,27 @@
 {{- $noteNumber := sub $paginator.TotalNumberOfElements $index }}
 {{- $displayNumber := printf "%02d" $noteNumber }}
 {{- with .Params.note }}{{ $displayNumber = . }}{{- end }}
-<article class="post-entry folio-entry">
+{{- $isLatest := and $.IsHome (eq $paginator.PageNumber 1) (eq $index 0) }}
+<article class="post-entry folio-entry{{ if $isLatest }} is-latest{{ end }}" style="--i: {{ $index }}">
   <div class="folio-entry-meta">
+    {{- if $isLatest }}<span class="folio-entry-flag">Latest</span>{{- end }}
     <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>
-    <span>note {{ $displayNumber }}</span>
+    <span class="folio-entry-note">note {{ $displayNumber }}</span>
+    {{- with .Params.series }}
+    <span>{{ . }}</span>
+    {{- with $page.Params.plate }}<span>Plate {{ . }}</span>{{- end }}
+    {{- else }}
     {{- with .Params.categories }}<span>{{ index . 0 }}</span>{{- end }}
+    {{- end }}
   </div>
   <div class="folio-entry-body">
-    <header class="entry-header"><h2>{{ .Title }}</h2></header>
+    <header class="entry-header"><h2><span>{{ .Title }}</span></h2></header>
     {{- if (ne (.Param "hideSummary") true) }}
+    {{- if and $isLatest .Description }}
+    <div class="entry-content"><p>{{ .Description }}</p></div>
+    {{- else }}
     <div class="entry-content"><p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}…{{ end }}</p></div>
+    {{- end }}
     {{- end }}
   </div>
   <span class="folio-entry-mark" aria-hidden="true">↗</span>
