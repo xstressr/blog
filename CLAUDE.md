@@ -81,6 +81,8 @@ Keep this table in date order when adding a post. `note` numbers are explicit fr
 | `adapter-field-notes-01-the-loss-is-not-the-task.md` | The Loss Is Not the Task | 2026-08-30 | 14 |
 | `adapter-field-notes-02-the-mask-is-the-objective.md` | The Mask Is the Objective | 2026-08-30 | 15 |
 | `adapter-field-notes-03-scale-bought-the-base.md` | Scale Bought the Base | 2026-08-30 | 16 |
+| `eval-field-notes-01-the-blind-set-went-stale.md` | The Blind Set Went Stale | 2026-09-27 | 17 |
+| `eval-field-notes-02-the-tool-said-no.md` | The Model Asked, the Tool Said No | 2026-09-27 | 18 |
 
 ## Pitfalls
 

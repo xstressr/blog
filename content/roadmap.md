@@ -44,12 +44,14 @@ Current folio: [C Field Notes I — Python Writes the Answer Sheet](/posts/c-fie
 
 ## 04 · AI systems
 
-**Status: next**
+**Status: in progress**
 
 - Retrieval and reranking
 - Evaluation sets and error analysis
 - Agents, tools, and reliable workflows
 - Serving, observability, latency, and cost
+
+Published sequence: [Eval Field Notes I — The Blind Set Went Stale](/posts/eval-field-notes-01-the-blind-set-went-stale/) and [II — The Model Asked, the Tool Said No](/posts/eval-field-notes-02-the-tool-said-no/). A small retrieval agent over four public Chinese contract documents, a calibrated LLM judge, frozen blind sets and synthetic users. Twelve to sixteen questions per set: evidence about method, not a benchmark.
 
 ## 05 · Original work
 
